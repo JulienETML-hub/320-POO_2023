@@ -8,7 +8,7 @@ namespace planes
 {
     class Plane
     {
-        
+        public int x = 0;
         private string[] view =
         {
             @" _                         ",
@@ -21,26 +21,33 @@ namespace planes
         public void show()
         {
             
-                for (int i = 0; i < view.Length; i++)
-                {
-                    
-                    Console.WriteLine(view[i]);
-                }
-
-
+            for (int i = 0; i < view.Length; i++)
+            {
+                Console.SetCursorPosition(x, i);
+                Console.Write(view[i]);
+            }
+            
         }
-         public void move(int _x, int _y) 
+        /* public void move(int _x, int _y) 
          {
+
+
             /*int xAvion = _x;
             int yAvion = _y;
-            xAvion++;*/
-            Console.SetCursorPosition(_x, _y);
+            xAvion++;         
             _x++;
             _y++;
              Thread.Sleep(50);
              Console.Clear();
-
-         }
-
+         } */
+        public void update()
+        {
+            x++;
+            if (x >= Config.SCREEN_WIDTH)
+            {
+                x = 0;
+            }
+            
+        }
     }
 }
