@@ -1,12 +1,15 @@
 ﻿using planes;
-
+Console.WindowHeight = Config.SCREEN_HEIGHT;
+Console.WindowWidth = Config.SCREEN_WIDTH;
 
 
 
 
 Plane avion1 = new Plane();
-Console.WindowHeight = Config.SCREEN_HEIGHT;
-Console.WindowWidth = Config.SCREEN_WIDTH;
+Para para1 = new Para();
+avion1.paraList.Add(para1);
+
+
     
     //(int Left, int Top) cursorPosition = Console.GetCursorPosition();
 
@@ -18,6 +21,6 @@ while (true)
     Console.Clear();
     avion1.update();
     avion1.show();
-    Thread.Sleep(5);
+    Thread.Sleep(20);
 }
 Console.Read();

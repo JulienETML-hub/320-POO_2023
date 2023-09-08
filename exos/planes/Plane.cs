@@ -8,6 +8,8 @@ namespace planes
 {
     class Plane
     {
+        public List<Para> paraList = new List<Para>();
+        
         public int x = 0;
         private string[] view =
         {
@@ -49,5 +51,6 @@ namespace planes
             }
             
         }
+
     }
 }
