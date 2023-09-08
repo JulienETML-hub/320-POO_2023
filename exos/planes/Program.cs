@@ -18,6 +18,17 @@ avion1.paraList.Add(para1);
 Console.Clear();
 while (true)
 {
+    if (Console.KeyAvailable) // L'utilisateur a pressé une touche
+    {
+        ConsoleKeyInfo keyPressed = Console.ReadKey(false);
+        switch (keyPressed.Key)
+        {
+            case ConsoleKey.Escape:
+                System.Environment.Exit(0);
+                break;
+                
+        }
+    }
     Console.Clear();
     avion1.update();
     avion1.show();
