@@ -8,6 +8,12 @@ namespace planes
 {
     class Para
     {
+        
+        public string name;
+        public int altitude;
+        public int longitude;
+        public int wind = 4;
+        public int speed;
         // View attributes
         private const int PARA_HEIGHT = 6;
 
@@ -29,10 +35,57 @@ namespace planes
             @"  ░  ",
             @" / \ ",
         };
-        public string name;
-        public int altitude;
-        public int longitude;
-        public int speed;
+        private string[] actualPara;
+        public void show()
+        {
+            for (int i = 0; i < this.actualPara.Length; i++)
+            {
+                Console.SetCursorPosition(this.longitude, this.altitude+i-6);
+                Console.Write(actualPara[i]);
+            }
+        }
+        public void update()
+        {
+            if (this.altitude < Config.SCREEN_HEIGHT)
+            {
+                if (this.altitude < Config.SCREEN_HEIGHT/2)
+                {
+                    this.actualPara = viewNoParachute;
+                    this.altitude+=2;
+                    if (wind != 0)
+                    {
+                        this.longitude += wind/3;
+                    }
+                }
+                else
+                {
+                    this.actualPara = viewWithParachute;
+                    this.altitude++;
+                    if (wind != 0)
+                    {
+                        this.longitude+=wind;
+                    }
+                }
+                
+                
+            } else
+            {
+                this.actualPara = viewNoParachute;
+            }
+
+        }
+        /*public int vitesse()
+        {
+            if(this.actualPara == viewNoParachute)
+            {
+                this.speed = 50;
+            }
+            else if (this.actualPara == viewWithParachute)
+            {
+                this.speed = 100;
+            }
+            return this.speed;
+        }*/
     
         
 

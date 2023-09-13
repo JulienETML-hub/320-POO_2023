@@ -43,13 +43,22 @@ namespace planes
              Console.Clear();
          } */
         public void update()
-        {
-            x++;
+        { 
+            x+=2;
             if (x >= Config.SCREEN_WIDTH)
             {
                 x = 0;
             }
             
+        }
+        public Para jump()
+        {
+            Para parachutiste = paraList.First();
+            parachutiste.altitude = 10;
+            parachutiste.longitude = x;
+            paraList.Remove(parachutiste);
+            
+            return parachutiste;
         }
 
     }
