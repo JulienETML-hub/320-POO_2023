@@ -8,11 +8,11 @@ namespace planes
 {
     class Para
     {
-        
+
         public string name;
         public int altitude;
         public int longitude;
-        public int wind = 4;
+        public int wind = 2;
         public int speed;
         // View attributes
         private const int PARA_HEIGHT = 6;
@@ -38,24 +38,30 @@ namespace planes
         private string[] actualPara;
         public void show()
         {
+
             for (int i = 0; i < this.actualPara.Length; i++)
             {
-                Console.SetCursorPosition(this.longitude, this.altitude+i-6);
+                Console.SetCursorPosition(this.longitude, this.altitude + i - 6);
                 Console.Write(actualPara[i]);
+                /*
+                 if (parachute is open){
+                afficher parachutiste avec parachute}
+                else if (parachute is close){
+                afficherparachutiste sans parachute}
+                 
+                 */
+               
             }
         }
         public void update()
         {
             if (this.altitude < Config.SCREEN_HEIGHT)
             {
-                if (this.altitude < Config.SCREEN_HEIGHT/2)
+                if (this.altitude < Config.SCREEN_HEIGHT / 2)
                 {
                     this.actualPara = viewNoParachute;
-                    this.altitude+=2;
-                    if (wind != 0)
-                    {
-                        this.longitude += wind/3;
-                    }
+                    this.altitude += 2;
+                 
                 }
                 else
                 {
@@ -63,14 +69,17 @@ namespace planes
                     this.altitude++;
                     if (wind != 0)
                     {
-                        this.longitude+=wind;
+                        this.longitude += wind;
                     }
                 }
-                
-                
-            } else
+            }
+            else
             {
                 this.actualPara = viewNoParachute;
+            }
+            if (this.longitude >= Config.SCREEN_WIDTH)
+            {
+                this.longitude = 0;
             }
 
         }
@@ -86,10 +95,10 @@ namespace planes
             }
             return this.speed;
         }*/
-    
-        
+
+
 
     }
-    
-    
+
+
 }
